@@ -12,7 +12,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 @Configuration
 public class AppConfig {
-
 	@Bean
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
@@ -20,21 +19,25 @@ public class AppConfig {
 		dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
 		dataSource.setUsername("postgres");
 		dataSource.setPassword("isdb62");
-		dataSource.setInitialSize(5); // Initial connections in the pool
-		dataSource.setMaxTotal(20); // Maximum number of active connections
-		dataSource.setMaxIdle(10); // Maximum idle connections
-		dataSource.setMinIdle(5); // Minimum idle connections
+		dataSource.setInitialSize(5);
+		dataSource.setMaxTotal(20);
+		dataSource.setMaxIdle(10);
+		dataSource.setMinIdle(5);
 		dataSource.setMaxWait(Duration.ofMillis(10000));
+
 		return dataSource;
+
 	}
 
 	@Bean
 	public JdbcTemplate jdbcTemplate(DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
+
 	}
 
 	@Bean
 	public DataSourceTransactionManager transactionManager(DataSource dataSource) {
 		return new DataSourceTransactionManager(dataSource);
 	}
+
 }

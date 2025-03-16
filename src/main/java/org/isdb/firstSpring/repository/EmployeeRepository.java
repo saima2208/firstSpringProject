@@ -20,14 +20,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class EmployeeRepository {
-	
+
 	private final JdbcTemplate jdbcTemplate;
 	private final SimpleJdbcInsert employeeInsert;
-	
+
 	public EmployeeRepository(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
-		
-		this.employeeInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("employee_sb").usingGeneratedKeyColumns("id"); 				
+
+		this.employeeInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("employee_sb")
+				.usingGeneratedKeyColumns("id");
 	}
 
 	public int save(Employee employee) {
@@ -39,11 +40,11 @@ public class EmployeeRepository {
 		parameters.put("address", employee.getAddress());
 		parameters.put("dob", employee.getDob());
 		parameters.put("salary", employee.getSalary());
-		
+
 		Number key = employeeInsert.executeAndReturnKey(parameters);
 		return key.intValue();
 	}
-	
+
 	public Optional<Employee> findById(int id) {
 		try {
 			String sql = "SELECT * FROM employee_sb WHERE ID = ?";
@@ -59,11 +60,11 @@ public class EmployeeRepository {
 	}
 
 	public int update(Employee employee) {
-		String sql = "UPDATE employee_sb SET name = ?, email = ?, designation = ?, "
+		String sql = "UPDATE employee_sb SET name = ?,  designation = ?, "
 				+ "age = ?, address = ?, dob = ?, salary = ? WHERE id = ?";
 
-		return jdbcTemplate.update(sql, employee.getName(), employee.getEmail(), employee.getDesignation(),
-				employee.getAge(), employee.getAddress(), employee.getDob(), employee.getSalary(), employee.getId());
+		return jdbcTemplate.update(sql, employee.getName(), employee.getDesignation(), employee.getAge(),
+				employee.getAddress(), employee.getDob(), employee.getSalary(), employee.getId());
 	}
 
 	public int deleteById(int id) {
@@ -132,11 +133,5 @@ public class EmployeeRepository {
 			throw new RuntimeException("Error saving employee", e);
 		}
 	}
-
-	}
-
-	
-
-	
 
 }
