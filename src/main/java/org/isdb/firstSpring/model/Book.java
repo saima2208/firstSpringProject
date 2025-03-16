@@ -14,6 +14,6 @@ public class Book {
 	private int id;
 	private String name;
 	private String author_name;
-	private int price;
+	private double price;
 
 }
