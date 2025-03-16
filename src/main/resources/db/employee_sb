@@ -1,0 +1,11 @@
+
+CREATE TABLE employee_sb(
+    ID SERIAL PRIMARY KEY,
+    NAME VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    designation VARCHAR(100),
+    AGE INTEGER,
+    address VARCHAR(500),
+    dob DATE,
+    salary DOUBLE PRECISION
+);

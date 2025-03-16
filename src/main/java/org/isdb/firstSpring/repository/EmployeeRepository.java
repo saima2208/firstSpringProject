@@ -20,14 +20,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class EmployeeRepository {
-	
+
 	private final JdbcTemplate jdbcTemplate;
 	private final SimpleJdbcInsert employeeInsert;
-	
+
 	public EmployeeRepository(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
-		
-		this.employeeInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("employee_sb").usingGeneratedKeyColumns("id"); 				
+
+		this.employeeInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("employee_sb")
+				.usingGeneratedKeyColumns("id");
 	}
 
 	public int save(Employee employee) {
@@ -39,11 +40,11 @@ public class EmployeeRepository {
 		parameters.put("address", employee.getAddress());
 		parameters.put("dob", employee.getDob());
 		parameters.put("salary", employee.getSalary());
-		
+
 		Number key = employeeInsert.executeAndReturnKey(parameters);
 		return key.intValue();
 	}
-	
+
 	public Optional<Employee> findById(int id) {
 		try {
 			String sql = "SELECT * FROM employee_sb WHERE ID = ?";
@@ -132,11 +133,5 @@ public class EmployeeRepository {
 			throw new RuntimeException("Error saving employee", e);
 		}
 	}
-
-	}
-
-	
-
-	
 
 }
