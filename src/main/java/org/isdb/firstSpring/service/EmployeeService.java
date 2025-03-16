@@ -1,5 +1,6 @@
 package org.isdb.firstSpring.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.isdb.firstSpring.model.Employee;
@@ -24,4 +25,25 @@ public class EmployeeService {
 		return byId.get();
 	}
 
+	public List<Employee> getAllEmp() {
+		List<Employee> all = repository.findAll();
+		return all;
+	}
+
+	public void deleteById(int id) {
+		repository.deleteById(id);
+
+	}
+
+	public Employee updateEmp(int id, Employee employee) {
+		employee.setId(id);
+		repository.update(employee);
+		return getEmpById(id);
+	}
+
+	public List<Employee> getEmpByName(String name) {
+
+		return repository.findByName(name);
+
+	}
 }

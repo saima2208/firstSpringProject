@@ -60,11 +60,11 @@ public class EmployeeRepository {
 	}
 
 	public int update(Employee employee) {
-		String sql = "UPDATE employee_sb SET name = ?, email = ?, designation = ?, "
+		String sql = "UPDATE employee_sb SET name = ?,  designation = ?, "
 				+ "age = ?, address = ?, dob = ?, salary = ? WHERE id = ?";
 
-		return jdbcTemplate.update(sql, employee.getName(), employee.getEmail(), employee.getDesignation(),
-				employee.getAge(), employee.getAddress(), employee.getDob(), employee.getSalary(), employee.getId());
+		return jdbcTemplate.update(sql, employee.getName(), employee.getDesignation(), employee.getAge(),
+				employee.getAddress(), employee.getDob(), employee.getSalary(), employee.getId());
 	}
 
 	public int deleteById(int id) {
