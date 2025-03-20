@@ -5,9 +5,8 @@ import java.util.Optional;
 
 import org.isdb.firstSpring.model.Student;
 import org.isdb.firstSpring.service.StudentService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,10 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping(value = "/student")
 public class StudentController {
-	private static final Logger log = LoggerFactory.getLogger(StudentController.class);
+	@Value("${custom.env}")
+	private String env;
 
 	@Autowired
 	private final StudentService service;
