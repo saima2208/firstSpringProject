@@ -21,15 +21,19 @@ public class Book {
  @Id
  @GeneratedValue(strategy = GenerationType.AUTO)
 private int id;
+ 
 @Column(nullable = false,length = 100)
 private String name;
+
 @Column(nullable = false,length = 100)
 private String author;
+
 @Column(nullable = false,length = 100)
 private String publisher;
-private Class clazz;
+
+private SClass clazz;
 
  @ManyToOne
- @JoinColumn(name = "student", nullable = false)
- private Student student;
+@JoinColumn(name = "student", nullable = false)
+private Student student;
 }
