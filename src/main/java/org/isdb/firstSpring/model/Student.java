@@ -20,42 +20,39 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "T_STUDENT")
+@Entity(name = "T_Student")
 public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 
-	@Column(nullable = false,length = 50)
+	@Column(nullable = false, length = 100)
 	private String name;
 
-	@Column(unique = true,length = 50)
+	@Column(nullable = false, length = 100)
 	private String email;
-	
+
 	@OneToOne
-	@JoinColumn(name = "clazz",referencedColumnName = "id",nullable = false)
-	private Class clazz;
+	@JoinColumn(name = "student_class", referencedColumnName = "id", nullable = false)
+	private StudentClass studentClass;
 
-	@Column(nullable = false, unique = true,length = 30)
-	private Integer roll;
+	@Column(nullable = false, unique = true)
+	private int roll;
 
-	
 	@OneToMany(mappedBy = "student")
-	private List<Book> books;
+	private List<Book> books; // Renamed to plural for clarity
 
-	@Column(nullable = false, length = 17)
+	@Column(nullable = false, length = 100)
 	private String phone;
 
 	@Column(length = 100)
 	private String address;
 
-	@Column(nullable = false,length = 10)
+	@Column(nullable = false, length = 100)
 	private String gender;
 
-	@Column(nullable = false,length = 30)
+	@Column(nullable = false)
 	private Instant dob;
 
-	
-	
 }

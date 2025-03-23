@@ -1,5 +1,5 @@
 package org.isdb.firstSpring.controller;
 
-public class EmployeeController {
-
+public class ClassController {
+    
 }
