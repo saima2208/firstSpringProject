@@ -3,7 +3,7 @@ package org.isdb.firstSpring.model;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-import org.isdb.config.InstantDeserializer;
+import org.isdb.firstSpring.config.InstantDeserializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 

@@ -21,7 +21,8 @@ public class StudentClass {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column(nullable = false, length = 50)
+
+	@Column(nullable = false, length = 50,unique = true)
 	private String name;
 	@OneToOne
 	@JoinColumn(name = "class_teacher", referencedColumnName = "id", nullable = false)

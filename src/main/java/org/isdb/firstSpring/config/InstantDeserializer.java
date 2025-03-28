@@ -1,4 +1,4 @@
-package org.isdb.config;
+package org.isdb.firstSpring.config;
 
 import java.io.IOException;
 import java.time.Instant;

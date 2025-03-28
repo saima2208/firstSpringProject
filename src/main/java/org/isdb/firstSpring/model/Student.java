@@ -27,32 +27,31 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false, length = 30)
 	private String name;
 
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false, length = 50)
 	private String email;
 
 	@OneToOne
-	@JoinColumn(name = "student_class", referencedColumnName = "id", nullable = false)
-	private StudentClass studentClass;
+	@JoinColumn(name = "clazz", referencedColumnName = "id", nullable = false)
+	private StudentClass clazz;
 
-	@Column(nullable = false, unique = true)
-	private int roll;
+	@Column(nullable = false, length = 30, unique = true)
+	private Integer roll;
 
 	@OneToMany(mappedBy = "student")
-	private List<Book> books; // Renamed to plural for clarity
+	private List<Book> books;
 
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false, length = 17)
 	private String phone;
 
 	@Column(length = 100)
 	private String address;
 
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false, length = 10)
 	private String gender;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 30)
 	private Instant dob;
-
 }
